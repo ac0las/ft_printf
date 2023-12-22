@@ -1,25 +1,18 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-int main() {
-    char num = 'a';
-    int result;
+int main() 
+{
+    int i;
+    int j;
+    char *s;
 
-    result = ft_printf("%c\n", num);
-    printf("%i\n", result);
+    s = "Hola mundo";
+ 
 
-    result = printf("%c\n", num);
-    printf("%i\n", result);
-/*
-    printf("printf: ");
-    printf("El char es %c\n", num);
+  i = ft_printf("Holaa  %c %s ", 'A', s);
+  j = printf("Holaa  %c %s ", 'A', s);
 
-    ft_printf("ft_printf: ");
-    ft_printf("El número es %c\n", num);
-
-    printf("printf: Counter = %i\n", counter_printf);
-    ft_printf("ft_printf: Counter = %i\n", counter_ft_printf);*/
-
-    return (0);
+  ft_printf("mio:\t\t%i\noriginal:\t%i", i, j);
 }
 

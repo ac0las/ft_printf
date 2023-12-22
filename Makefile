@@ -16,7 +16,7 @@ RM = rm -rf
 CC = gcc
 AR = ar crs
 CFLAGS = -Wall -Wextra -Werror
-SRC = ft_printf.c ft_putchar.c
+SRC = ft_printf.c ft_putchar.c ft_putstr.c
 
 
 

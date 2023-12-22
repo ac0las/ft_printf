@@ -12,14 +12,15 @@
 
 #include "ft_printf.h"
 
-int ft_format(va_list varg, char *str)
+int	ft_format(va_list varg, char *str)
 {
-	int counter;
+	int	counter;
+
 	counter = 0;
 	if (*str == 'c')
 		counter += ft_putchar(va_arg(varg, int));
 	else if (*str == 's')
-		counter += ft_putstr(va_arg(varg, int))
+		counter += ft_putstr(va_arg(varg, char *));
 	/*
 	else if (str == 's')
 	else if (str == 'p')
@@ -40,6 +41,8 @@ int	ft_printf(char const *str, ...)
 	va_list	varg;
 	int	counter;
 
+	if (!str)
+		return(0);
 	counter = 0;
 	va_start(varg, str);
 	while (*str)
