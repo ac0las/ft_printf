@@ -21,8 +21,9 @@ int	ft_format(va_list varg, char *str)
 		counter += ft_putchar(va_arg(varg, int));
 	else if (*str == 's')
 		counter += ft_putstr(va_arg(varg, char *));
+	else if (*str == 'p')
+		counter += ft_putptr(va_arg(varg,void *ptr))
 	/*
-	else if (str == 's')
 	else if (str == 'p')
 	else if (str == 'd')
 	else if (str == 'i')
