@@ -6,7 +6,7 @@
 #    By: acolas-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 19:37:28 by acolas-l          #+#    #+#              #
-#    Updated: 2023/12/20 19:44:47 by acolas-l         ###   ########.fr        #
+#    Updated: 2024/01/24 11:17:39 by acolas-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC =  ft_printf.c\
 	ft_putnbr.c\
 	ft_unsint.c\
 	ft_putptr.c\
+	ft_puthexa.c\
 
 .PHONY: all clean fclean re bonus
 

@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acolas-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 17:39:09 by acolas-l          #+#    #+#             */
-/*   Updated: 2024/01/24 08:50:54 by acolas-l         ###   ########.fr       */
+/*   Created: 2024/01/24 11:06:32 by acolas-l          #+#    #+#             */
+/*   Updated: 2024/01/24 12:31:30 by acolas-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int	ft_puthexa(unsigned long long hexa, char *hex_digits)
 {
-	int	count;
+	int		count;
 
 	count = 0;
-	if (n == -2147483648)
+	if (hexa >= 16)
 	{
-		count += ft_putchar('-');
-		count += ft_putchar('2');
-		n = 147483648;
-	}
-	if (n < 0)
-	{
-		count += ft_putchar('-');
-		count += ft_putnbr(-n);
+		count += ft_puthexa(hexa / 16, hex_digits);
+		count += ft_puthexa(hexa % 16, hex_digits);
 	}
 	else
-	{
-		if (n <= 9)
-			count += ft_putchar(n + '0');
-		else
-		{
-			count += ft_putnbr(n / 10);
-			count += ft_putchar (n % 10 + '0');
-		}
-	}
+		count += ft_putchar(hex_digits[hexa]);
 	return (count);
 }

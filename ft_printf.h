@@ -6,7 +6,7 @@
 /*   By: acolas-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 19:45:41 by acolas-l          #+#    #+#             */
-/*   Updated: 2023/12/20 19:49:38 by acolas-l         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:31:18 by acolas-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# define HEX_UPP "0123456789ABCDEF"
+# define HEX_LOW "0123456789abcdef"
+
 int	ft_format(char *format, va_list variadicargs);
 int	ft_printf(char const *format, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_putnbr(int n);
 int	ft_unsint(unsigned int n);
+int	ft_puthexa(unsigned long long hexa, char *hex_digits);
 int	ft_putptr(unsigned long long ptr);
-int	ft_puthexa(unsigned long long hexa);
 
 #endif

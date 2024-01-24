@@ -6,7 +6,7 @@
 /*   By: acolas-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 18:48:19 by acolas-l          #+#    #+#             */
-/*   Updated: 2024/01/24 08:27:56 by acolas-l         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:20:59 by acolas-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,18 @@ int	ft_format(char *format, va_list variadicargs)
 		count += ft_putchar(va_arg(variadicargs, int));
 	else if (*format == 's')
 		count += ft_putstr(va_arg(variadicargs, char *));
-	else if (*format == 'd' || *format == 'i')
-		count += ft_putnbr(va_arg(variadicargs, int));
-	else if (*format == '%')
-		count += ft_putchar(*format);
-	else if (*format == 'u')
-		count += ft_unsint(va_arg(variadicargs, unsigned int));
 	else if (*format == 'p')
 		count += ft_putptr(va_arg(variadicargs, unsigned long long));
+	else if (*format == 'd' || *format == 'i')
+		count += ft_putnbr(va_arg(variadicargs, int));
+	else if (*format == 'u')
+		count += ft_unsint(va_arg(variadicargs, unsigned int));
+	else if (*format == 'x')
+		count += ft_puthexa(va_arg(variadicargs, unsigned long long), HEX_LOW);
+	else if (*format == 'X')
+		count += ft_puthexa(va_arg(variadicargs, unsigned long long), HEX_UPP);
+	else if (*format == '%')
+		count += ft_putchar(*format);
 	else
 	{
 		return (0);
@@ -50,7 +54,7 @@ int	ft_printf(char const *str, ...)
 		if (*str == '%')
 		{
 			str++;
-			counter += ft_format(varg, (char *)str);
+			counter += ft_format((char *)str, varg);
 		}
 		else
 			counter += ft_putchar(*str);
