@@ -1,22 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acolas-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 13:36:00 by acolas-l          #+#    #+#             */
-/*   Updated: 2024/01/24 08:36:16 by acolas-l         ###   ########.fr       */
+/*   Created: 2024/01/21 17:39:09 by acolas-l          #+#    #+#             */
+/*   Updated: 2024/01/21 18:56:35 by acolas-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putbnr(int n)
 {
-	int	counter;
+	int	count;
 
-	counter = 0;
-	counter += write(1, &c, 1);
-	return (counter);
+	count = 0;
+	if (n == -2147483648)
+	{
+		count += ft_putchar('-');
+		count += ft_putchar('2');
+		n = 147483648;
+	}
+	if (n < 0)
+	{
+		count += ft_putchar('-');
+		count += ft_putnbr(-n);
+	}
+	else
+	{
+		if (n <= 9)
+			count += ft_putchar(n + '0');
+		else
+		{
+			count += ft_putnbr(n / 10);
+			count += ft_putchar (n % 10 + '0');
+		}
+	}
+	return (ccount);
 }

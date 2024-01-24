@@ -6,44 +6,43 @@
 /*   By: acolas-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 18:48:19 by acolas-l          #+#    #+#             */
-/*   Updated: 2023/12/22 12:43:04 by acolas-l         ###   ########.fr       */
+/*   Updated: 2024/01/24 08:27:56 by acolas-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_format(va_list varg, char *str)
+int	ft_format(char *format, va_list variadicargs)
 {
-	int	counter;
+	int	count;
 
-	counter = 0;
-	if (*str == 'c')
-		counter += ft_putchar(va_arg(varg, int));
-	else if (*str == 's')
-		counter += ft_putstr(va_arg(varg, char *));
-	else if (*str == 'p')
-		counter += ft_putptr(va_arg(varg,void *ptr))
-	/*
-	else if (str == 'p')
-	else if (str == 'd')
-	else if (str == 'i')
-	else if (str == 'u')
-	else if (str == 'x')
-	else if (str == 'X')
-	else if (str == '%')	*/
-
+	count = 0;
+	if (*format == 'c')
+		count += ft_putchar(va_arg(variadicargs, int));
+	else if (*format == 's')
+		count += ft_putstr(va_arg(variadicargs, char *));
+	else if (*format == 'd' || *format == 'i')
+		count += ft_putnbr(va_arg(variadicargs, int));
+	else if (*format == '%')
+		count += ft_putchar(*format);
+	else if (*format == 'u')
+		count += ft_unsint(va_arg(variadicargs, unsigned int));
+	else if (*format == 'p')
+		count += ft_putptr(va_arg(variadicargs, unsigned long long));
 	else
-		return(0);
-	return(counter);
+	{
+		return (0);
+	}
+	return (count);
 }
 
 int	ft_printf(char const *str, ...)
 {
 	va_list	varg;
-	int	counter;
+	int		counter;
 
 	if (!str)
-		return(0);
+		return (0);
 	counter = 0;
 	va_start(varg, str);
 	while (*str)
@@ -57,7 +56,6 @@ int	ft_printf(char const *str, ...)
 			counter += ft_putchar(*str);
 		str++;
 	}
-
 	va_end(varg);
-	return(counter);
+	return (counter);
 }
