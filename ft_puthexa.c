@@ -31,7 +31,7 @@ int	ft_puthexa(unsigned int hexa, char form)
 			if (form == 'X')
 				count += ft_putchar(hexa - 10 + 'A');
 			else if (form == 'x')
-				count += ft_putchar(hexa -10 + 'a');
+				count += ft_putchar(hexa - 10 + 'a');
 		}
 	}
 	return (count);
