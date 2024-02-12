@@ -12,17 +12,27 @@
 
 #include "ft_printf.h"
 
-int	ft_puthexa(unsigned long long hexa, char *hex_digits)
+int	ft_puthexa(unsigned int hexa, char form)
 {
 	int		count;
 
 	count = 0;
 	if (hexa >= 16)
 	{
-		count += ft_puthexa(hexa / 16, hex_digits);
-		count += ft_puthexa(hexa % 16, hex_digits);
+		count += ft_puthexa(hexa / 16, form);
+		count += ft_puthexa(hexa % 16, form);
 	}
 	else
-		count += ft_putchar(hex_digits[hexa]);
+	{
+		if (hexa <= 9)
+			count += ft_putchar(hexa + '0');
+		else
+		{
+			if (form == 'X')
+				count += ft_putchar(hexa - 10 + 'A');
+			else if (form == 'x')
+				count += ft_putchar(hexa -10 + 'a');
+		}
+	}
 	return (count);
 }

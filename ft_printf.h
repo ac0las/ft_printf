@@ -16,9 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-
-# define HEX_UPP "0123456789ABCDEF"
-# define HEX_LOW "0123456789abcdef"
+# include <string.h>
 
 int	ft_format(char *format, va_list variadicargs);
 int	ft_printf(char const *format, ...);
@@ -26,7 +24,7 @@ int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_putnbr(int n);
 int	ft_unsint(unsigned int n);
-int	ft_puthexa(unsigned long long hexa, char *hex_digits);
+int	ft_puthexa(unsigned int hexa, char form);
 int	ft_putptr(unsigned long long ptr);
 
 #endif

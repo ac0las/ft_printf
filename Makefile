@@ -24,7 +24,7 @@ SRC =  ft_printf.c\
 	ft_putptr.c\
 	ft_puthexa.c\
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 
 OBJS = $(SRC:.c=.o)
 all: $(NAME)

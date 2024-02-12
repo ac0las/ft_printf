@@ -27,10 +27,8 @@ int	ft_format(char *format, va_list variadicargs)
 		count += ft_putnbr(va_arg(variadicargs, int));
 	else if (*format == 'u')
 		count += ft_unsint(va_arg(variadicargs, unsigned int));
-	else if (*format == 'x')
-		count += ft_puthexa(va_arg(variadicargs, unsigned long long), HEX_LOW);
-	else if (*format == 'X')
-		count += ft_puthexa(va_arg(variadicargs, unsigned long long), HEX_UPP);
+	else if (*format == 'x' || *format == 'X')
+		count += ft_puthexa(va_arg(variadicargs, unsigned int), *format);
 	else if (*format == '%')
 		count += ft_putchar(*format);
 	else
